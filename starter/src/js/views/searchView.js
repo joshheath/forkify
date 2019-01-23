@@ -1,5 +1,4 @@
 import { elements } from './base';
-
 export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => {
@@ -10,18 +9,17 @@ export const clearResults = () => {
   elements.searchResList.innerHTML = '';
 };
 
-const limitRecipeTitle = (recipe, limit = 17) => {
+const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
-
   if (title.length > limit) {
     title.split(' ').reduce((acc, cur) => {
-      if (acc + cur <= limit) {
+      if (acc + cur.length <= limit) {
         newTitle.push(cur);
       }
       return acc + cur.length;
     }, 0);
-    return `${newTitle.join(' ')} ...)`;
-  }
+    return `${newTitle.join(' ')} ...`;
+  };
   return title;
 };
 
@@ -33,7 +31,7 @@ const renderRecipe = recipe => {
           <img src="${recipe.image_url}" alt="${recipe.title}">
         </figure>
         <div class="results__data">
-          <h4 class="results__name">${recipe.title}</h4>
+          <h4 class="results__name">${limitRecipeTitle(recipe.title)}</h4>
           <p class="results__author">${recipe.publisher}</p>
         </div>
       </a>
@@ -43,6 +41,5 @@ const renderRecipe = recipe => {
 };
 
 export const renderResults = recipes => {
-  console.log(recipes);
   recipes.forEach(renderRecipe);
 };
