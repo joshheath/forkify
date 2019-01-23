@@ -10,6 +10,21 @@ export const clearResults = () => {
   elements.searchResList.innerHTML = '';
 };
 
+const limitRecipeTitle = (recipe, limit = 17) => {
+  const newTitle = [];
+
+  if (title.length > limit) {
+    title.split(' ').reduce((acc, cur) => {
+      if (acc + cur <= limit) {
+        newTitle.push(cur);
+      }
+      return acc + cur.length;
+    }, 0);
+    return `${newTitle.join(' ')} ...)`;
+  }
+  return title;
+};
+
 const renderRecipe = recipe => {
   const markUp = `
     <li>
