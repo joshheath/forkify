@@ -36,6 +36,3 @@ elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
 });
-
-
-// search.getResults();
