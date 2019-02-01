@@ -17,6 +17,18 @@ export default class Recipe {
       this.ingredients = res.data.recipe.ingredients;
     } catch(error) {
       console.log(error);
+      alert('Something went wrong :(')
     }
+  }
+
+  calcTime() {
+    // Assumng we need 15 mins for each 3 ingredients
+    const numIng = this.ingredients.length;
+    const periods = Math.ceil(numIng / 3);
+    const time = period * 15;
+  }
+
+  calcServings(){
+    this.servings = 4;
   }
 }
