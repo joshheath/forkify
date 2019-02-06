@@ -58,11 +58,13 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
   // get recipe id from the url
   const id = window.location.hash.replace('#', '');
-  console.log(id);
+  // console.log(id);
 
   if(id) {
     // prepare the UI for changes
+    recipeView.clearRecipe();
     renderLoader(elements.recipe);
+
     // create new recipe object
     state.recipe = new Recipe(id);
 
