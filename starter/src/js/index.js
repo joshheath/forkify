@@ -98,10 +98,15 @@ elements.recipe.addEventListener('click', e=> {
   // the argument below matches btn-decrease and any child element of it
   if (e.target.matches('.btn-decrease, .btn-decrease *')) {
     // decrease button is clicked
-    state.recipe.updateServings('dec');
+    if(state.recipe.servings > 1) {
+      state.recipe.updateServings('dec');
+      recipeView.updateServingsIngredients(state.recipe);
+    }
   } else if (e.target.matches('.btn-increase, .btn-increase *')) {
     // increase button is clicked
     state.recipe.updateServings('inc');
+    recipeView.updateServingsIngredients(state.recipe);
+
   }
   console.log(state.recipe);
 });
