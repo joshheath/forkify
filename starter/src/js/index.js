@@ -13,6 +13,8 @@ import { elements, renderLoader, clearLoader } from './views/base';
 */
 
 const state = {};
+window.state = state;
+
 // SEARCH CONTROLLER
 const controlSearch = async () => {
   // 1. get query from view
@@ -94,6 +96,7 @@ const controlRecipe = async () => {
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
+
 // LIST CONTROLLER
 const controlList = () => {
   // create a new list if there is not one already
@@ -105,6 +108,21 @@ const controlList = () => {
     listView.renderItem(item);
   });
 };
+
+// Handle, delete and update list item events
+elements.shopping.addEventListener('click', e => {
+  const id = e.target.closest('.shopping__item').dataset.itemid;
+
+  // Delete button
+  if (e.target.matches('.shopping__delete, .shopping__delete *')){
+    // delete from state
+    state.list.deleteItem(id);
+
+    // delete from UI
+    listView.deleteItem(id);
+  }
+});
+
 
 
 // handling recipe button clicks
@@ -124,7 +142,6 @@ elements.recipe.addEventListener('click', e=> {
   } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
     controlList();
   }
-
 });
 
 window.l = new List();
