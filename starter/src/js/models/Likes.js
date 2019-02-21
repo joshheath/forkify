@@ -18,4 +18,8 @@ export default class Likes {
     // if an item is not liked the id will equal -1 and the expression below will be false
     return this.likes.findIndex(el => el.id === id) !== -1;
   }
+
+  getNumLikes(){
+    return this.likes.length;
+  }
 }
