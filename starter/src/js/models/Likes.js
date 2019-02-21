@@ -13,4 +13,9 @@ export default class Likes {
     const index = this.like.findIndex(el => el.id === id);
     this.likes.splice(index, 1);
   }
+
+  isLiked(id){
+    // if an item is not liked the id will equal -1 and the expression below will be false
+    return this.likes.findIndex(el => el.id === id) !== -1;
+  }
 }
