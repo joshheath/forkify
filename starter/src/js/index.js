@@ -88,7 +88,10 @@ const controlRecipe = async () => {
 
       // render recipe
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(
+        state.recipe,
+        state.likes.isLiked(id)
+      );
     } catch(err) {
       alert('Error processing recipe');
     }
@@ -131,6 +134,10 @@ elements.shopping.addEventListener('click', e => {
 });
 
 // LIKES CONTROLLER
+
+// for testing
+state.likes = new Likes();
+
 const controlLike = () => {
   if(!state.likes) state.likes = new Likes();
   const currentId = state.recipe.id;
