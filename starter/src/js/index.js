@@ -15,7 +15,6 @@ import { elements, renderLoader, clearLoader } from './views/base';
 */
 
 const state = {};
-window.state = state;
 
 // SEARCH CONTROLLER
 const controlSearch = async () => {
@@ -64,7 +63,6 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
   // get recipe id from the url
   const id = window.location.hash.replace('#', '');
-  // console.log(id);
 
   if(id) {
     // prepare the UI for changes
@@ -133,6 +131,7 @@ elements.shopping.addEventListener('click', e => {
   }
 });
 
+
 // LIKES CONTROLLER
 const controlLike = () => {
   if(!state.likes) state.likes = new Likes();
@@ -198,8 +197,6 @@ elements.recipe.addEventListener('click', e=> {
     controlLike();
   }
 });
-
-window.l = new List();
 
 
 
