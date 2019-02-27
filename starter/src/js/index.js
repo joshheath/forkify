@@ -177,8 +177,6 @@ window.addEventListener('load', () => {
   state.likes.likes.forEach(like => likesView.renderLike(like));
 });
 
-
-
 // handling recipe button clicks
 elements.recipe.addEventListener('click', e=> {
   // the argument below matches btn-decrease and any child element of it
